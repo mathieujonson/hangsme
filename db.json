@@ -1,34 +1,24 @@
 {
   "todos": [
     {
-      "id": 1,
-      "name": "configure server",
-      "isComplete": true
-    },
-    {
-      "id": 2,
-      "name": "start server",
-      "isComplete": true
-    },
-    {
       "id": 3,
       "name": "Load data into app",
-      "isComplete": false
+      "isComplete": true
     },
     {
-      "id": 4,
-      "name": "Add records",
-      "isComplete": false
+      "name": "another thing",
+      "isComplete": false,
+      "id": 5
     },
     {
-      "id": 5,
-      "name": "update records",
-      "isComplete": false
-    },
-    {
-      "name": "New Todo",
-      "isComplete": true,
+      "name": "wow",
+      "isComplete": false,
       "id": 6
+    },
+    {
+      "name": "cool beans",
+      "isComplete": false,
+      "id": 7
     }
   ]
 }
