@@ -17,7 +17,7 @@ class Multiplayer extends Component {
     //const {currentTodo} = this.props
     return (
       <div>
-        Multiplayer
+        Multiplayer coming soon!
       </div>
     )
   }

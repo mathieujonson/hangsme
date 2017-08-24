@@ -17,7 +17,7 @@ class Home extends Component {
     //const {currentTodo} = this.props
     return (
       <div>
-        Home Page
+        Hangman game coming soon!
       </div>
     )
   }

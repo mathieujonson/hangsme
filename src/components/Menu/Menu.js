@@ -17,7 +17,7 @@ class Menu extends Component {
     //const {currentTodo} = this.props
     return (
       <div>
-        Menu
+        Menu coming soon!
       </div>
     )
   }

@@ -6,6 +6,7 @@ import Home from './components/Home/Home'
 import SinglePlayer from './components/SinglePlayer/SinglePlayer'
 import Multiplayer from './components/Multiplayer/Multiplayer'
 import Menu from './components/Menu/Menu'
+import NotFound from './components/NotFound'
 import Footer from './components/Footer'
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
                                 <Route path="/single-player" component={SinglePlayer} />
                                 <Route path="/multiplayer" component={Multiplayer} />
                                 <Route path="/menu" component={Menu} />
+                                <Route component={NotFound} />
                             </Switch>
                         </div>
                     <Footer />

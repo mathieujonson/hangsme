@@ -17,7 +17,7 @@ class SinglePlayer extends Component {
     //const {currentTodo} = this.props
     return (
       <div>
-        Single Player
+        Single player coming soon!
       </div>
     )
   }
