@@ -1,12 +1,13 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-class NotFound extends Component {
+class NotFound extends React.Component {
+  componentDidMount() {
+    document.title = '404 - Hangs.me'
+  }
+
   render() {
-    //const {currentTodo} = this.props
     return (
-      <div>
-        <p>Woah!  I'm not sure what you're looking for, but it ain't here!</p>
-      </div>
+      <p>Woah!  I'm not sure what you're looking for, but it ain't here!</p>
     )
   }
 }

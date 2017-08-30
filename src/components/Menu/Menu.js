@@ -1,17 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import {updateCurrent, saveTodo} from '../../reducers/todo'
 
-class Menu extends Component {
-  // handleInputChange = (evt) => {
-  //   const val = evt.target.value
-  //   this.props.updateCurrent(val)
-  // }
-  //
-  // handleSubmit = (evt) => {
-  //   evt.preventDefault()
-  //   this.props.saveTodo(this.props.currentTodo)
-  // }
+class Menu extends React.Component {
+  componentDidMount() {
+      document.title = 'Menu - Hangs.me'
+  }
 
   render() {
     //const {currentTodo} = this.props
@@ -24,6 +17,4 @@ class Menu extends Component {
 }
 
 export default connect(
-  (state) => ({currentTodo: state.todo.currentTodo}),
-  {updateCurrent, saveTodo}
 )(Menu)

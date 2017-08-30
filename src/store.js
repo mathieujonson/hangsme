@@ -1,17 +1,17 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux'
-import {composeWithDevTools} from 'redux-devtools-extension'
-import thunk from 'redux-thunk'
-import todoReducer from './reducers/todo'
-import messageReducer from './reducers/messages'
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import {createLogger} from "redux-logger";
+import rootReducer from './reducers/root-reducer';
 
-const reducer = combineReducers({
-  todo: todoReducer,
-  message: messageReducer
-})
+const logger = createLogger();
 
-export default createStore(
-  reducer,
-  composeWithDevTools(
-    applyMiddleware(thunk)
-  )
-)
+const store = createStore(rootReducer,
+    {
+        singlePlayer: {
+            gameStep:0
+        }
+    },
+    applyMiddleware(thunk, logger)
+);
+
+export default store;

@@ -15,15 +15,15 @@ class App extends Component {
             <Router>
                 <div className="App">
                     <Header />
-                        <div className="content-container">
-                            <Switch>
-                                <Route exact path="/" component={Home} />
-                                <Route path="/single-player" component={SinglePlayer} />
-                                <Route path="/multiplayer" component={Multiplayer} />
-                                <Route path="/menu" component={Menu} />
-                                <Route component={NotFound} />
-                            </Switch>
-                        </div>
+                    <div className="content-container">
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/single-player" component={SinglePlayer} />
+                            <Route path="/multiplayer" component={Multiplayer} />
+                            <Route path="/menu" component={Menu} />
+                            <Route component={NotFound} />
+                        </Switch>
+                    </div>
                     <Footer />
                 </div>
             </Router>
