@@ -7,7 +7,6 @@ export function singlePlayer(state = {}, action) {
                 inProgress: true,
                 error: '',
                 success: '',
-                gameStep: 0
             });
         }
         case ActionTypes.GetWordRejected: {
@@ -22,15 +21,19 @@ export function singlePlayer(state = {}, action) {
                 inProgress: false,
                 success: 'Got word.',
                 word: word,
-                gameStep:1
+                gameStep:7,
+                lettersGuessed: []
             })
         }
         case ActionTypes.SingleGuessLetter: {
-            const gameStep = state.gameStep + 1
             const lettersGuessed = state.lettersGuessed ? [action.letter].concat(state.lettersGuessed) : [action.letter]
             return Object.assign({}, state, {
-                gameStep: gameStep,
                 lettersGuessed: lettersGuessed
+            })
+        }
+        case ActionTypes.SingleUpdateStep: {
+            return Object.assign({}, state, {
+                gameStep: action.step
             })
         }
         default:

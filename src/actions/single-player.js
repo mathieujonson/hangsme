@@ -21,6 +21,13 @@ export function guessLetter(letter) {
     }
 }
 
+export function updateStep(step) {
+    return {
+        type: ActionTypes.SingleUpdateStep,
+        step
+    }
+}
+
 function getWordRequestedAction() {
     return {
         type: ActionTypes.GetWordRequested

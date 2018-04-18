@@ -1,10 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getWord } from '../../actions/single-player';
+import { updateStep } from '../../actions/single-player';
 
 class CurrentWord extends React.Component {
     render() {
-        var displayWord = this.props.word.replace(/[a-z]/g, '_')
+        let displayWord = [];
+
+        if(this.props.lettersGuessed) {
+            displayWord = this.props.word.split('').map((value) => {
+                if(this.props.lettersGuessed.includes(value)) {
+                    return value;
+                }
+                else {
+                    return '_'
+                }
+            })
+        }
+        else {
+            displayWord = this.props.word.replace(/[a-z]/g, '_')
+        }
+
         return (
             <div className="current-word-container">
                 {displayWord}
@@ -16,14 +31,15 @@ class CurrentWord extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        gameStep: state.singlePlayer.gameStep,
         word: state.singlePlayer.word,
-        lettersGuessed: state.singlePlayer.gameStep
+        lettersGuessed: state.singlePlayer.lettersGuessed
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onGetWord: (key) => dispatch(getWord(key))
+        updateStep: (step) => dispatch(updateStep(step))
     };
 }
 

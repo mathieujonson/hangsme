@@ -1,31 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { guessLetter } from '../../actions/single-player';
+import { guessLetter, updateStep } from '../../actions/single-player';
 import { sendFlashMessage} from '../../actions/flash-message';
 
 class GuessInput extends React.Component {
-    updateDisplay(e) {
+    updateGame(e) {
         // The letter guessed
         var value = e.target.value.toLowerCase()
 
-        if(typeof this.props.lettersGuessed === 'object'){
-            console.log("indexOf",Object.values(this.props.lettersGuessed).indexOf(value));
-        }
         // The letter isn't a letter
         if(!/[a-z]/i.test(value)) {
             this.props.sendFlashMessage(`That isn't a letter`)
-            console.log('not a letter')
         }
         // The letter has already been guessed
         else if(typeof this.props.lettersGuessed === 'object' && Object.values(this.props.lettersGuessed).indexOf(value) >= 0) {
              this.props.sendFlashMessage(`You already guessed that letter`)
-             console.log('already guessed');
         }
         else {
-            // Clear any messages
-            this.props.sendFlashMessage('')
             // Process the letter
             this.props.onGuessLetter(value)
+
+            // Update game step if the letter isn't in the word
+            if(this.props.word.indexOf(value) < 0) {
+                this.props.updateStep(this.props.gameStep - 1)
+            }
+
+            // Clear any messages
+            this.props.sendFlashMessage('')
         }
 
         // Clear the input
@@ -35,8 +36,8 @@ class GuessInput extends React.Component {
     render() {
         return (
             <div className="guess-letter-container">
-                <label for="guess-input">Guess a letter:</label>
-                <input type="text" onInput={this.updateDisplay.bind(this)} className="guess-input" />
+                <label htmlFor="guess-input">Guess a letter:</label>
+                <input type="text" onInput={this.updateGame.bind(this)} id="guess-input" className="guess-input" />
             </div>
         );
     }
@@ -45,13 +46,15 @@ class GuessInput extends React.Component {
 function mapStateToProps(state) {
     return {
         word: state.singlePlayer.word,
-        lettersGuessed: state.singlePlayer.lettersGuessed
+        lettersGuessed: state.singlePlayer.lettersGuessed,
+        gameStep: state.singlePlayer.gameStep
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         onGuessLetter: (letter) => dispatch(guessLetter(letter)),
+        updateStep: (step) => dispatch(updateStep(step)),
         sendFlashMessage: (message) => dispatch(sendFlashMessage(message))
     };
 }

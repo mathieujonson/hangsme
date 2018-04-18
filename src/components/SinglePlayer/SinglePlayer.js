@@ -11,26 +11,8 @@ class SinglePlayer extends React.Component {
     }
 
     render() {
-
-        let markup = null;
-
-        switch(this.props.gameStep) {
-            case 0:
-                markup = <NewSingle />
-                break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-                markup = <GameBoard />
-                break;
-            default:
-                markup = "Unknown game state!"
-        }
+        let markup = this.props.word ? <GameBoard /> : <NewSingle />
+let markup = this.props.user ?
         return (
             <div className="single-player">
                 <h2>Single Player</h2>
@@ -44,7 +26,8 @@ class SinglePlayer extends React.Component {
 function mapStateToProps(state) {
     return {
         word:     state.singlePlayer.word,
-        gameStep: state.singlePlayer.gameStep
+        gameStep: state.singlePlayer.gameStep,
+        user: state.login
     };
 }
 
