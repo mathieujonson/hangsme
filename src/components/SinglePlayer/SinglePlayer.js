@@ -12,7 +12,7 @@ class SinglePlayer extends React.Component {
 
     render() {
         let markup = this.props.word ? <GameBoard /> : <NewSingle />
-let markup = this.props.user ?
+
         return (
             <div className="single-player">
                 <h2>Single Player</h2>
